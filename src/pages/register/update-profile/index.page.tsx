@@ -1,4 +1,11 @@
-import { Heading, Text, MultiStep, TextArea, Button } from '@ignite-ui/react'
+import {
+  Heading,
+  Text,
+  MultiStep,
+  TextArea,
+  Button,
+  Avatar,
+} from '@ignite-ui/react'
 import { Container, Header } from '../styles'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
@@ -9,6 +16,8 @@ import { ArrowRight } from 'phosphor-react'
 import { unstable_getServerSession } from 'next-auth'
 import { buildNextAuthOptions } from '../../api/auth/[...nextauth].api'
 import { GetServerSideProps } from 'next'
+import { api } from '../../../lib/axios'
+import { useRouter } from 'next/router'
 
 const updateProfileSchema = z.object({
   bio: z.string(),
@@ -26,9 +35,15 @@ export default function UpdateProfile() {
   })
 
   const session = useSession()
-  console.log(session)
+  const router = useRouter()
 
-  async function handleUpdateProfile(data: updateProfileData) {}
+  async function handleUpdateProfile(data: updateProfileData) {
+    await api.put('/users/profile', {
+      bio: data.bio,
+    })
+
+    await router.push(`/schedule/${session.data?.user.username}`)
+  }
 
   return (
     <Container>
@@ -39,12 +54,16 @@ export default function UpdateProfile() {
           editar essas informações depois.
         </Text>
 
-        <MultiStep size={4} currentStep={1} />
+        <MultiStep size={4} currentStep={4} />
       </Header>
 
       <ProfileBox as="form" onSubmit={handleSubmit(handleUpdateProfile)}>
         <label>
           <Text size="sm">Foto de perfil</Text>
+          <Avatar
+            src={session.data?.user.avatar_url}
+            alt={session.data?.user.name}
+          />
         </label>
         <label>
           <Text size="sm">Sobre você</Text>
