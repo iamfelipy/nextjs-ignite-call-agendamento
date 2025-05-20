@@ -1,3 +1,5 @@
+import { CalendarStep } from './CalendarStep'
+
 export function ScheduleForm() {
-  return <div>teste</div>
+  return <CalendarStep />
 }
