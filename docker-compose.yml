@@ -1,10 +1,11 @@
 services:
   mysql:
     image: mysql:latest
-    container_name: mysqlignite
+    container_name: mysqlignite-refazendo
     environment:
       - MYSQL_ROOT_PASSWORD=docker
       - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
     ports:
       - "3306:3306"
     restart: unless-stopped
