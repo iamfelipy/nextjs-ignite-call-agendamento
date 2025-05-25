@@ -36,7 +36,7 @@ export function buildNextAuthOptions(
         if (
           !account?.scope?.includes('https://www.googleapis.com/auth/calendar')
         ) {
-          return '/register/connect-calendar/?error=permissions'
+          return '/register/connect-calendar?error=permissions'
         }
 
         return true
