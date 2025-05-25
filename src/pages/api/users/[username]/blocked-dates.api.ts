@@ -5,8 +5,6 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // http://localhost:3333/api/users/felipy/availability?date=2022-12-20
-
   if (req.method !== 'GET') {
     return res.status(405).end()
   }
