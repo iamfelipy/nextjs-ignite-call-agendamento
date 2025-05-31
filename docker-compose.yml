@@ -1,13 +1,18 @@
+version: '3.8'
+
 services:
-  mysql:
-    image: mysql:latest
-    container_name: mysqlignite-refazendo
+  postgres:
+    image: postgres:latest
+    container_name: postgresigniterefazendo
     environment:
-      - MYSQL_ROOT_PASSWORD=docker
-      - MYSQL_USER=docker
-      - MYSQL_PASSWORD=docker
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - "3306:3306"
-    restart: unless-stopped
+      - "5436:5432"
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data/pgdata
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
