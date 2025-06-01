@@ -5,7 +5,9 @@
 Aplicação de agendamento de compromissos desenvolvida com Next.js no bootcamp Ignite da Rocketseat. Inspirada no Calendly, permite que usuários se autentiquem com a conta Google, definam disponibilidade e compartilhem um link para agendamentos diretamente no Google Calendar.
 
 > 🔗 Repositório original:  
-> https://github.com/iamfelipy/2024-rocketseat-reactjs/tree/main/7-aprofundando-em-nextjs
+> https://github.com/iamfelipy/2024-rocketseat-reactjs/tree/main/7-aprofundando-em-nextjs  
+> 🌐 Deploy:  
+> https://nextjs-ignite-call-agendamento.vercel.app
 
 ## 💻 Funcionalidades
 
